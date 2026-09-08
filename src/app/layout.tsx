@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Header, Footer } from "@/components/Navigation";
+import { QuoteModalProvider } from "@/components/QuoteModal";
+import { FloatingQuickWidget } from "@/components/FloatingQuickWidget";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,10 +25,14 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <QuoteModalProvider>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <FloatingQuickWidget />
+        </QuoteModalProvider>
       </body>
     </html>
   );
 }
+

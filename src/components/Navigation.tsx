@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useQuoteModal } from './QuoteModal';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -15,6 +16,8 @@ const navLinks = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { openQuoteModal } = useQuoteModal();
+
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -88,12 +91,12 @@ export function Header() {
 
           {/* Desktop CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-light)] text-[var(--foreground)] font-semibold text-sm transition-all duration-200 btn-shimmer active:scale-95"
+            <button
+              onClick={() => openQuoteModal()}
+              className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-light)] text-[var(--foreground)] font-semibold text-sm transition-all duration-200 btn-shimmer active:scale-95 shadow-sm"
             >
               Get a Quote
-            </Link>
+            </button>
 
             {/* Hamburger */}
             <button
@@ -129,18 +132,21 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            onClick={() => setMobileOpen(false)}
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              openQuoteModal();
+            }}
             className="mt-8 px-8 py-4 rounded-xl bg-[var(--accent)] text-[var(--foreground)] font-bold text-lg transition-all active:scale-95"
           >
             Get a Quote →
-          </Link>
+          </button>
           <a href="tel:+18327373912" className="mt-4 text-[var(--text-muted)] font-mono text-sm">
             (832) 737-3912
           </a>
         </div>
       </div>
+
     </>
   );
 }

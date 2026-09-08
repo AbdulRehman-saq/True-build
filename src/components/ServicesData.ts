@@ -6,6 +6,7 @@ export interface ServiceItem {
   summary: string;
   deliverables: string[];
   projectTypes: string[];
+  image: string;
 }
 
 export const servicesData: ServiceItem[] = [
@@ -23,7 +24,8 @@ export const servicesData: ServiceItem[] = [
       'Roofing & Framing Plans',
       'Window & Door Schedules'
     ],
-    projectTypes: ['New Home Builds & Additions', 'Accessory Dwelling Units (ADUs)', 'Patio Plans, Decks & Pergolas', 'Commercial Tenant Build-outs']
+    projectTypes: ['New Home Builds & Additions', 'Accessory Dwelling Units (ADUs)', 'Patio Plans, Decks & Pergolas', 'Commercial Tenant Build-outs'],
+    image: '/images/project_drafting.jpg'
   },
   {
     id: 'engineering',
@@ -38,7 +40,8 @@ export const servicesData: ServiceItem[] = [
       'Structural Review, Load-Bearing Wall Calculations',
       'PE Engineering Stamps (Licensed across 11 states)'
     ],
-    projectTypes: ['Single Family & Multi-Family Residential', 'Commercial Ground-Up & Tenant Improvements', 'Decks, Pergolas, & Patio Structural Reviews']
+    projectTypes: ['Single Family & Multi-Family Residential', 'Commercial Ground-Up & Tenant Improvements', 'Decks, Pergolas, & Patio Structural Reviews'],
+    image: '/images/project_engineering.jpg'
   },
   {
     id: 'shop-drawings',
@@ -53,7 +56,8 @@ export const servicesData: ServiceItem[] = [
       '3D MEP Spatial Coordination Drawings',
       'Curtain Wall & Glazing Fabrication Sets'
     ],
-    projectTypes: ['Steel & Concrete Fabricators', 'Specialty Subcontractors', 'Commercial Building Contractors']
+    projectTypes: ['Steel & Concrete Fabricators', 'Specialty Subcontractors', 'Commercial Building Contractors'],
+    image: '/images/project_shopdrawings.jpg'
   },
   {
     id: '3d-design',
@@ -67,7 +71,8 @@ export const servicesData: ServiceItem[] = [
       '4K Video Walkthrough Animations',
       'Commercial Presentation & Investor Decks'
     ],
-    projectTypes: ['Residential Remodels & Custom Homes', 'Restaurants & Hospitality Concepts', 'Commercial Real Estate Leasing Packages']
+    projectTypes: ['Residential Remodels & Custom Homes', 'Restaurants & Hospitality Concepts', 'Commercial Real Estate Leasing Packages'],
+    image: '/images/project_interior_3d.jpg'
   },
   {
     id: 'estimation-takeoff',
@@ -81,6 +86,7 @@ export const servicesData: ServiceItem[] = [
       'Subcontractor Bid-Ready Summaries',
       '1-Hour Rush Estimate Delivery Option'
     ],
-    projectTypes: ['Residential Remodels & ADUs', 'Commercial General Bidding', 'Ongoing Remote Estimating Partnerships']
+    projectTypes: ['Residential Remodels & ADUs', 'Commercial General Bidding', 'Ongoing Remote Estimating Partnerships'],
+    image: '/images/project_estimation.jpg'
   }
 ];
