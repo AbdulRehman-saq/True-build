@@ -14,8 +14,10 @@
 /coverage
 
 # next.js
+.next/
 /.next/
 /out/
+ture-build/
 
 # production
 /build

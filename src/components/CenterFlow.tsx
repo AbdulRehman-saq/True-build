@@ -24,7 +24,7 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
       title: 'Architectural Drafting',
       subtitle: 'Permit-ready floor & site plans',
       href: '/services/drafting',
-      icon: <Compass className="w-4 h-4" />,
+      icon: <Compass className="w-5 h-5" />,
     },
     {
       id: 'engineering',
@@ -32,7 +32,7 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
       title: 'Structural & MEP',
       subtitle: 'PE stamped engineering & calcs',
       href: '/services/engineering',
-      icon: <Layers className="w-4 h-4" />,
+      icon: <Layers className="w-5 h-5" />,
     },
     {
       id: 'shop-drawings',
@@ -40,7 +40,7 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
       title: 'Shop Drawings',
       subtitle: 'Fabrication & CNC-ready steel',
       href: '/services/shop-drawings',
-      icon: <Cpu className="w-4 h-4" />,
+      icon: <Cpu className="w-5 h-5" />,
     },
     {
       id: '3d-design',
@@ -48,7 +48,7 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
       title: '3D Design & BIM',
       subtitle: 'Photorealistic WebGL models',
       href: '/services/3d-design',
-      icon: <Box className="w-4 h-4" />,
+      icon: <Box className="w-5 h-5" />,
     },
     {
       id: 'estimation',
@@ -56,26 +56,26 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
       title: 'Cost Takeoff',
       subtitle: '95–97% accurate material bids',
       href: '/services/estimation-takeoff',
-      icon: <FileSpreadsheet className="w-4 h-4" />,
+      icon: <FileSpreadsheet className="w-5 h-5" />,
     },
   ];
 
   return (
     <div className={`relative rounded-3xl border border-[var(--border)] bg-[var(--surface-elevated)] shadow-xl overflow-hidden ${className}`}>
-      {/* Top subtle notification bar */}
-      <div className="px-4 sm:px-6 py-3 bg-white/80 border-b border-[var(--border)] flex items-center justify-between gap-2 text-xs font-mono">
-        <div className="flex items-center gap-2 text-[var(--accent)] font-semibold tracking-wider uppercase text-[11px] sm:text-xs">
-          <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-pulse text-[var(--accent)] shrink-0" />
+      {/* Top clear notification bar */}
+      <div className="px-4 sm:px-6 py-3 bg-white/95 dark:bg-slate-900/95 border-b border-[var(--border)] flex items-center justify-between gap-2 text-xs font-sans">
+        <div className="flex items-center gap-2 text-amber-800 dark:text-amber-400 font-extrabold tracking-wider uppercase text-xs sm:text-sm">
+          <Sparkles className="w-4 h-4 animate-pulse text-amber-500 shrink-0" />
           <span>Integrated Services • 5 Disciplines</span>
         </div>
-        <div className="flex items-center gap-3 text-[var(--text-muted)]">
-          <span className="hidden md:inline text-xs">Click any node to explore full service scope</span>
+        <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
+          <span className="hidden md:inline text-xs sm:text-sm">Click any node to explore full service scope</span>
           <Link
             href="/services"
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white hover:bg-[var(--surface)] text-[var(--accent)] hover:text-[var(--accent-dark)] font-bold border border-[var(--border)] transition-all text-[11px] sm:text-xs shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-all text-xs shadow-xs"
           >
             <span>View All</span>
-            <ArrowRight className="w-3 h-3" />
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
@@ -83,7 +83,7 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
       {/* Spacious 700px height Center Flow radial visualizer */}
       <CenterFlow
         nodeItems={serviceNodes}
-        centerSize={150}
+        centerSize={156}
         nodeSize={80}
         borderRadius={38}
         nodeDistance={0.92}
@@ -98,14 +98,14 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
         glowColor="#D8A338"
         centerContent={
           <div className="flex flex-col items-center justify-center gap-1.5 pointer-events-none select-none">
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] animate-ping" />
-            <span className="font-mono text-[9px] font-extrabold uppercase tracking-widest text-[var(--accent)]">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
+            <span className="font-mono text-[11px] font-black uppercase tracking-widest text-amber-400">
               Integrated
             </span>
-            <span className="font-heading font-black text-2xl text-white tracking-tight leading-none drop-shadow-sm">
+            <span className="font-heading font-black text-2xl sm:text-3xl text-white tracking-tight leading-none drop-shadow-md">
               Services
             </span>
-            <span className="text-[10px] font-mono font-bold text-[var(--accent)] bg-black/30 px-2.5 py-0.5 rounded-full border border-[var(--accent)]/40 mt-0.5">
+            <span className="text-xs font-mono font-bold text-amber-300 bg-black/60 px-3 py-0.5 rounded-full border border-amber-400/50 mt-1 shadow-sm">
               5 Disciplines
             </span>
           </div>

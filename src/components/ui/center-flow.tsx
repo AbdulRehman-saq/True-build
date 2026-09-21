@@ -239,17 +239,17 @@ export function CenterFlow({
                     onClick={item.onClick}
                     className={`block w-full p-4 rounded-2xl transition-all duration-200 border cursor-pointer active:scale-[0.98] ${
                       isHovered
-                        ? 'bg-white border-2 border-[var(--accent)] shadow-xl shadow-[var(--accent)]/20'
-                        : 'bg-white border-[var(--border)] shadow-md hover:border-[var(--accent)]'
+                        ? 'bg-white dark:bg-slate-900 border-2 border-amber-500 shadow-xl shadow-amber-500/20'
+                        : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:border-amber-500'
                     }`}
                   >
                     <div className="flex items-center gap-3.5">
                       {/* Icon */}
                       <div
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                        className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                           isHovered
-                            ? 'bg-[var(--accent)] text-white shadow-md'
-                            : 'bg-[var(--surface-elevated)] text-[var(--accent)] border border-[var(--border)]'
+                            ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
+                            : 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60'
                         }`}
                       >
                         {item.icon ? (
@@ -263,23 +263,23 @@ export function CenterFlow({
                       <div className="flex-1 min-w-0 text-left">
                         <div className="flex items-center gap-2">
                           {item.num && (
-                            <span className="font-mono text-[10px] font-bold text-[var(--accent)] px-1.5 py-0.5 rounded bg-[var(--surface-elevated)] border border-[var(--border)]">
+                            <span className="font-mono text-xs font-bold text-slate-950 bg-amber-400 px-2 py-0.5 rounded-md shrink-0 shadow-xs">
                               {item.num}
                             </span>
                           )}
-                          <h4 className="font-heading font-bold text-sm text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors leading-tight truncate">
+                          <h4 className="font-heading font-extrabold text-[15px] text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-tight truncate">
                             {item.title}
                           </h4>
                         </div>
                         {item.subtitle && (
-                          <p className="text-xs text-[var(--text-secondary)] font-mono mt-1 leading-snug line-clamp-1">
+                          <p className="text-xs font-sans font-medium text-slate-600 dark:text-slate-300 mt-1 leading-normal line-clamp-1">
                             {item.subtitle}
                           </p>
                         )}
                       </div>
 
                       {/* Action Arrow */}
-                      <div className="shrink-0 text-[var(--accent)] group-hover:translate-x-1 transition-transform pl-1">
+                      <div className="shrink-0 text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform pl-1">
                         <ArrowRight className="w-4 h-4" />
                       </div>
                     </div>
@@ -475,22 +475,22 @@ export function CenterFlow({
                 item.content
               ) : (
                 <div
-                  className={`relative flex items-center gap-3.5 px-5 py-3.5 rounded-2xl transition-all duration-300 ${
+                  className={`relative flex items-center gap-3.5 px-5 py-4 rounded-2xl transition-all duration-300 ${
                     isHovered
-                      ? 'bg-white border-2 border-[var(--accent)] shadow-xl shadow-[var(--accent)]/20'
-                      : 'bg-white border border-[var(--border)] shadow-md hover:border-[var(--accent)]/70'
+                      ? 'bg-white dark:bg-slate-900 border-2 border-amber-500 shadow-2xl shadow-amber-500/25'
+                      : 'bg-white dark:bg-slate-900 border-2 border-slate-200/90 dark:border-slate-800 shadow-lg shadow-black/5 hover:border-amber-500'
                   }`}
                   style={{
-                    minWidth: '230px',
-                    maxWidth: '300px',
+                    minWidth: '270px',
+                    maxWidth: '340px',
                   }}
                 >
                   {/* Indicator / Icon dot */}
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all ${
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all ${
                       isHovered
-                        ? 'bg-[var(--accent)] text-white shadow-md'
-                        : 'bg-[var(--surface-elevated)] text-[var(--accent)] border border-[var(--border)]'
+                        ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
+                        : 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60'
                     }`}
                   >
                     {item.icon ? (
@@ -502,30 +502,30 @@ export function CenterFlow({
 
                   {/* Title & Badge */}
                   <div className="flex-1 min-w-0 text-left">
-                    <div className="flex items-center gap-1.5 flex-wrap">
+                    <div className="flex items-center gap-2">
                       {item.num && (
-                        <span className="font-mono text-[10px] font-bold text-[var(--accent)] px-1.5 py-0.5 rounded bg-[var(--surface-elevated)] border border-[var(--border)]">
+                        <span className="font-mono text-xs font-bold text-slate-950 bg-amber-400 px-2 py-0.5 rounded-md shrink-0 shadow-xs">
                           {item.num}
                         </span>
                       )}
-                      <span className="font-heading font-bold text-sm text-[var(--foreground)] group-hover/node:text-[var(--accent)] transition-colors leading-tight">
+                      <span className="font-heading font-extrabold text-[15px] text-slate-900 dark:text-white group-hover/node:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-tight">
                         {item.title}
                       </span>
                     </div>
                     {item.subtitle && (
-                      <p className="text-[11px] text-[var(--text-secondary)] font-mono mt-0.5 leading-snug">
+                      <p className="text-xs font-sans font-medium text-slate-600 dark:text-slate-300 mt-1 leading-normal">
                         {item.subtitle}
                       </p>
                     )}
                   </div>
 
                   {/* Branch glowing node dot */}
-                  <div className="flex items-center gap-1.5 shrink-0">
+                  <div className="flex items-center gap-1.5 shrink-0 pl-1">
                     <span
-                      className={`w-2.5 h-2.5 rounded-full transition-all ${
+                      className={`w-3 h-3 rounded-full transition-all ${
                         isHovered
-                          ? 'bg-[var(--accent)] ring-4 ring-[var(--accent)]/30 scale-125'
-                          : 'bg-[var(--border)]'
+                          ? 'bg-amber-500 ring-4 ring-amber-500/35 scale-125'
+                          : 'bg-slate-300 dark:bg-slate-600'
                       }`}
                     />
                   </div>
