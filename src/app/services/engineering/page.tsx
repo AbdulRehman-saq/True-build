@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ScrollReveal, StaggerContainer } from '@/components/Animations';
 import { ServiceTabNav } from '@/components/ServiceTabNav';
+import { QuoteButton } from '@/components/QuoteModal';
 
 export default function EngineeringPage() {
   const deliverables = [
@@ -108,9 +109,9 @@ export default function EngineeringPage() {
                   Open to working as an extended engineering team for architecture and drafting firms — reviewing and stamping structural sets to your project&apos;s requirements, at a lower cost than a full in-house engineering staff. We can support a single structural review or serve as your ongoing engineering resource across multiple projects.
                 </p>
                 <div className="pt-2">
-                  <Link href="/contact" className="inline-flex items-center text-sm font-bold text-[var(--accent)] hover:underline">
+                  <QuoteButton service="engineering" className="inline-flex items-center text-sm font-bold text-[var(--accent)] hover:underline">
                     Talk to our engineering leads →
-                  </Link>
+                  </QuoteButton>
                 </div>
               </div>
             </div>
@@ -129,9 +130,9 @@ export default function EngineeringPage() {
                   Get your structural calculations and PE-stamped plans reviewed by our licensed engineers.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                  <QuoteButton service="engineering" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
                     Request Engineering Quote →
-                  </Link>
+                  </QuoteButton>
                   <a href="tel:+18327373912" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/15 text-white font-bold border border-[var(--background)]/30 hover:bg-black/30 transition-all">
                     Call +1 (832) 737-3912
                   </a>

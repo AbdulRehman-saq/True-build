@@ -15,7 +15,7 @@ export function ServiceTabNav({ activeId }: TabProps) {
   ];
 
   return (
-    <div className="border-b border-[var(--border)] bg-[var(--background)]/90 backdrop-blur sticky top-20 z-40">
+    <div className="border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur sticky top-20 lg:top-[103px] z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="flex overflow-x-auto gap-2 py-3.5 no-scrollbar">
           {tabs.map((tab) => {

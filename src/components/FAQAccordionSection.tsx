@@ -111,10 +111,10 @@ export function FAQAccordionSection() {
               setSelectedCat(c.id);
               setOpenIdx(null);
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer ${
               selectedCat === c.id
-                ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20'
-                : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-[var(--foreground)]'
+                ? 'bg-[var(--accent)] text-white font-bold shadow-md shadow-[var(--accent)]/20'
+                : 'bg-white border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--foreground)] hover:border-[var(--accent)]/60'
             }`}
           >
             {c.label}
@@ -129,23 +129,23 @@ export function FAQAccordionSection() {
           return (
             <div
               key={index}
-              className="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden transition-colors"
+              className="bg-white border border-[var(--border)] rounded-2xl overflow-hidden transition-all shadow-xs hover:border-[var(--accent)]/60"
             >
               <button
                 onClick={() => setOpenIdx(isOpen ? null : index)}
-                className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 hover:bg-slate-800/40 transition-colors"
+                className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 hover:bg-[var(--surface-elevated)]/40 transition-colors cursor-pointer"
               >
                 <span className="font-bold text-[var(--foreground)] text-base sm:text-lg flex items-center gap-3">
-                  <span className="text-amber-500 font-mono text-sm">Q.</span>
+                  <span className="text-[var(--accent)] font-mono text-sm font-bold">Q.</span>
                   {faq.q}
                 </span>
-                <span className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-amber-400 font-mono text-lg font-bold shrink-0">
+                <span className="w-8 h-8 rounded-full bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center text-[var(--foreground)] font-mono text-lg font-bold shrink-0">
                   {isOpen ? '−' : '+'}
                 </span>
               </button>
 
               {isOpen && (
-                <div className="px-6 pb-6 pt-2 text-slate-300 text-sm leading-relaxed border-t border-slate-800/60 bg-slate-950/40">
+                <div className="px-6 pb-6 pt-3 text-[var(--text-secondary)] text-sm leading-relaxed border-t border-[var(--border)] bg-[var(--background)]/40">
                   {faq.a}
                 </div>
               )}

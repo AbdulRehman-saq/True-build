@@ -1,8 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useQuoteModal } from './QuoteModal';
+import { useModelExplorer } from './ModelExplorer3DModal';
+import { Magnetic } from './FramerMotion';
+import { Compass } from 'lucide-react';
+
+import CardNav, { CardNavItem } from './CardNav';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -10,14 +15,12 @@ const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/projects', label: 'Projects' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const { openQuoteModal } = useQuoteModal();
-
+  const { openModelExplorer } = useModelExplorer();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -25,133 +28,151 @@ export function Header() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
+  const cardNavItems: CardNavItem[] = useMemo(() => [
+    {
+      label: "Services",
+      href: "/services",
+      bgColor: "#131d2e",
+      textColor: "#ffffff",
+      links: [
+        { label: "Drafting & Plans", href: "/services/drafting", ariaLabel: "Architectural Drafting & Floor Plans" },
+        { label: "Structural & MEP", href: "/services/engineering", ariaLabel: "Structural & MEP Engineering" },
+        { label: "3D BIM & Renders", href: "/services/3d-design", ariaLabel: "3D Rendering & Design" },
+        { label: "Cost Estimation", href: "/services/estimation-takeoff", ariaLabel: "Cost Estimation & Takeoff" },
+        { label: "Shop Drawings", href: "/services/shop-drawings", ariaLabel: "Fabrication Shop Drawings" },
+      ]
+    },
+    {
+      label: "Projects & Tech",
+      href: "/projects",
+      bgColor: "#1e293b",
+      textColor: "#ffffff",
+      links: [
+        { label: "Projects Gallery", href: "/projects", ariaLabel: "View Portfolio & Projects" },
+        { label: "3D BIM Explorer", onClick: () => openModelExplorer(), ariaLabel: "Launch 3D BIM Model Explorer" },
+        { label: "Frequently Asked", href: "/faq", ariaLabel: "Frequently Asked Questions" },
+        { label: "About ProArch", href: "/about", ariaLabel: "About ProArch Design & Estimation" }
+      ]
+    },
+    {
+      label: "Contact & Quote",
+      onClick: () => openQuoteModal(),
+      bgColor: "#242d3d",
+      textColor: "#ffffff",
+      links: [
+        { label: "(832) 737-3912", ariaLabel: "Phone: (832) 737-3912" },
+        { label: "Email Team", href: "mailto:info@proarchestdesign.com", ariaLabel: "Email info@proarchestdesign.com" }
+      ]
+    }
+  ], [openQuoteModal, openModelExplorer]);
 
   return (
     <>
-      {/* Micro top bar */}
-      <div className="bg-[var(--surface)] text-[10px] sm:text-xs text-[var(--text-muted)] border-b border-[var(--border)] py-1.5 px-4 sm:px-8 hidden sm:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <span className="tracking-wide">
-            PE-Licensed Engineering across TX · FL · CA · GA · CO · MA · AZ · UT · KY · NC · SC
-          </span>
-          <div className="flex items-center gap-5">
-            <a href="tel:+18327373912" className="hover:text-[var(--accent)] transition-colors font-mono tracking-wide">
-              (832) 737-3912
-            </a>
-            <span className="w-px h-3 bg-[var(--border)]" />
-            <a href="mailto:info@proarchestdesign.com" className="hover:text-[var(--accent)] transition-colors">
-              info@proarchestdesign.com
-            </a>
+      {/* Mobile and Tablet CardNav Menu (< 1024px) */}
+      <CardNav
+        className="lg:hidden"
+        items={cardNavItems}
+        logo="/ProArch_Logo_Design&Estimation.png"
+        logoAlt="ProArch Design & Estimation"
+        baseColor="#F7F5F0"
+        menuColor="#12161F"
+        buttonBgColor="#D8A338"
+        buttonTextColor="#ffffff"
+        ctaText="Get a Quote"
+        onCtaClick={() => openQuoteModal()}
+        ease="power3.out"
+      />
+      <div className="h-20 lg:hidden" aria-hidden="true" />
+
+      {/* Desktop Header (>= 1024px) - Fixed at top screen */}
+      <div className="hidden lg:block fixed top-0 left-0 right-0 z-50">
+        {/* Micro top bar */}
+        <div className="bg-[var(--surface)] text-xs text-[var(--text-muted)] border-b border-[var(--border)] py-1.5 px-8">
+          <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <span className="tracking-wide">
+              PE-Licensed Engineering across TX · FL · CA · GA · CO · MA · AZ · UT · KY · NC · SC
+            </span>
+            <div className="flex items-center gap-5">
+              <a href="tel:+18327373912" className="hover:text-[var(--accent)] transition-colors font-mono tracking-wide">
+                (832) 737-3912
+              </a>
+              <span className="w-px h-3 bg-[var(--border)]" />
+              <a href="mailto:info@proarchestdesign.com" className="hover:text-[var(--accent)] transition-colors">
+                info@proarchestdesign.com
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Header */}
-      <header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-[var(--border)]'
-            : 'bg-transparent border-b border-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[72px] flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group" onClick={() => setMobileOpen(false)}>
-            <div className="relative">
-              <div className="w-10 h-10 rounded-md bg-[var(--accent)] flex items-center justify-center text-[var(--foreground)] font-bold text-xl tracking-tight transition-transform group-hover:scale-110 group-hover:rotate-[-2deg]">
-                P
-              </div>
-              <div className="absolute -inset-1 rounded-lg bg-[var(--accent)]/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="leading-none">
-              <span className="text-lg font-bold tracking-tight text-[var(--foreground)] block">ProArch</span>
-              <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--text-muted)] font-medium block mt-0.5">
-                Design & Estimation
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--foreground)] rounded-lg hover:bg-[var(--foreground)]/[0.04] transition-all duration-200 font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA + Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => openQuoteModal()}
-              className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-light)] text-[var(--foreground)] font-semibold text-sm transition-all duration-200 btn-shimmer active:scale-95 shadow-sm"
-            >
-              Get a Quote
-            </button>
-
-            {/* Hamburger */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-[var(--foreground)]/5 transition-colors"
-              aria-label="Toggle menu"
-            >
-              <span className={`w-5 h-[1.5px] bg-[var(--foreground)] transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[4.5px]' : ''}`} />
-              <span className={`w-5 h-[1.5px] bg-[var(--foreground)] transition-all duration-300 ${mobileOpen ? 'opacity-0 scale-0' : ''}`} />
-              <span className={`w-5 h-[1.5px] bg-[var(--foreground)] transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[4.5px]' : ''}`} />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu Overlay */}
-      <div
-        className={`fixed inset-0 z-40 bg-white/98 backdrop-blur-2xl transition-all duration-500 lg:hidden ${
-          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-2 pb-20">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className={`text-3xl font-bold text-[var(--foreground)] hover:text-[var(--accent)] transition-all duration-300 py-3 ${
-                mobileOpen ? 'animate-slide-up' : ''
-              }`}
-              style={{ animationDelay: `${i * 60}ms` }}
-            >
-              {link.label}
+        {/* Main Desktop Header */}
+        <header
+          className={`transition-all duration-300 ${
+            scrolled
+              ? 'bg-white/98 backdrop-blur-xl shadow-md border-b border-[var(--border)]'
+              : 'bg-white/95 backdrop-blur-md shadow-xs border-b border-[var(--border)]'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-8 h-[72px] flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center group py-2">
+              <img
+                src="/ProArch_Logo_Design&Estimation.png"
+                alt="ProArch Design & Estimation"
+                className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.03]"
+              />
             </Link>
-          ))}
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              openQuoteModal();
-            }}
-            className="mt-8 px-8 py-4 rounded-xl bg-[var(--accent)] text-[var(--foreground)] font-bold text-lg transition-all active:scale-95"
-          >
-            Get a Quote →
-          </button>
-          <a href="tel:+18327373912" className="mt-4 text-[var(--text-muted)] font-mono text-sm">
-            (832) 737-3912
-          </a>
-        </div>
-      </div>
 
+            {/* Desktop Nav */}
+            <nav className="flex items-center gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--foreground)] rounded-lg hover:bg-[var(--foreground)]/[0.04] transition-all duration-200 font-medium"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <button
+                type="button"
+                onClick={() => openQuoteModal()}
+                className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--foreground)] rounded-lg hover:bg-[var(--foreground)]/[0.04] transition-all duration-200 font-medium cursor-pointer"
+              >
+                Contact
+              </button>
+              {/* 3D BIM Explorer Nav Item */}
+              <button
+                onClick={() => openModelExplorer()}
+                className="ml-2 px-3 py-1.5 rounded-lg bg-[var(--foreground)] hover:bg-[var(--accent)] text-white text-xs font-mono font-semibold transition-all flex items-center gap-1.5 shadow-sm border border-transparent cursor-pointer"
+              >
+                <Compass className="w-3.5 h-3.5 text-[var(--accent)] animate-spin-slow" />
+                <span>3D BIM Model</span>
+              </button>
+            </nav>
+
+            {/* Desktop CTA */}
+            <div className="flex items-center gap-3">
+              <Magnetic pullFactor={0.25}>
+                <button
+                  onClick={() => openQuoteModal()}
+                  className="inline-flex items-center px-5 py-2.5 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white font-semibold text-sm transition-all duration-200 btn-shimmer active:scale-95 shadow-sm cursor-pointer"
+                >
+                  Get a Quote
+                </button>
+              </Magnetic>
+            </div>
+          </div>
+        </header>
+      </div>
+      {/* Desktop spacer to prevent content shift */}
+      <div className="hidden lg:block h-[103px]" aria-hidden="true" />
     </>
   );
 }
 
 export function Footer() {
+  const { openQuoteModal } = useQuoteModal();
+
   return (
     <footer className="bg-[var(--surface)] border-t border-[var(--border)] relative">
       {/* Decorative top line */}
@@ -161,15 +182,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-md bg-[var(--accent)] flex items-center justify-center text-[var(--foreground)] font-bold text-lg">
-                P
-              </div>
-              <div className="leading-none">
-                <span className="text-lg font-bold text-[var(--foreground)] block">ProArch</span>
-                <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--text-muted)] block mt-0.5">Design & Estimation</span>
-              </div>
-            </div>
+            <Link href="/" className="inline-block group py-1">
+              <img
+                src="/ProArch_Logo_Design&Estimation.png"
+                alt="ProArch Design & Estimation"
+                className="h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              />
+            </Link>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-sm">
               Permit-ready drafting, PE-stamped structural & MEP engineering, fabrication shop drawings, photorealistic 3D renders, and construction cost estimates delivered nationwide.
             </p>
@@ -190,6 +209,15 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openQuoteModal()}
+                  className="text-[var(--text-secondary)] hover:text-[var(--foreground)] transition-colors duration-200 cursor-pointer text-left"
+                >
+                  Contact & Quote
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -226,6 +254,15 @@ export function Footer() {
                 <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                   Shady Trail PMB 242<br />Dallas, TX 75229
                 </p>
+              </div>
+              <div className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => openQuoteModal()}
+                  className="inline-flex items-center text-xs font-semibold text-[var(--accent)] hover:underline cursor-pointer"
+                >
+                  Open Quote Request →
+                </button>
               </div>
             </div>
           </div>

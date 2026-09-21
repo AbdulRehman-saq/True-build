@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ScrollReveal, StaggerContainer } from '@/components/Animations';
 import { ServiceTabNav } from '@/components/ServiceTabNav';
+import { QuoteButton } from '@/components/QuoteModal';
 
 export default function ThreeDDesignPage() {
   const deliverables = [
@@ -103,9 +104,9 @@ export default function ThreeDDesignPage() {
                   Get photorealistic renders built directly from your project drawings.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                  <QuoteButton service="3d-design" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
                     Request a Render Quote →
-                  </Link>
+                  </QuoteButton>
                   <Link href="/projects" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/15 text-[var(--foreground)] font-bold border border-white/20 hover:bg-white/25 transition-all">
                     See Our Projects
                   </Link>

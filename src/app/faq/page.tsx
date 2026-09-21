@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ScrollReveal } from '@/components/Animations';
+import { QuoteButton } from '@/components/QuoteModal';
 
 const faqList = [
   { cat: 'drafting', q: "Can you draft using our firm's existing drawing templates?", a: "Yes. When acting as an extended drafting partner, we draft directly into your CAD/BIM templates, adhering to your layer standards, font hierarchies, and title blocks." },
@@ -115,9 +116,9 @@ export default function FAQPage() {
           <ScrollReveal delay={300}>
             <div className="text-center pt-8">
               <p className="text-[var(--text-secondary)] mb-4">Still have a question?</p>
-              <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm transition-all hover:bg-[var(--accent-light)] active:scale-95 shadow-md shadow-[var(--accent)]/15">
-                Contact Us →
-              </Link>
+              <QuoteButton className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm transition-all hover:bg-[var(--accent-light)] active:scale-95 shadow-md shadow-[var(--accent)]/15">
+                Contact & Inquire →
+              </QuoteButton>
             </div>
           </ScrollReveal>
         </div>

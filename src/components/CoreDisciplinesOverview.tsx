@@ -41,20 +41,20 @@ export function CoreDisciplinesOverview() {
   ];
 
   return (
-    <section className="py-20 bg-[#070D1E] text-[var(--foreground)] border-y border-slate-800 relative">
+    <section className="py-20 bg-[var(--surface)] text-[var(--foreground)] border-y border-[var(--border)] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 block mb-2">
-              — WHAT WE DO
+            <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold block mb-2">
+              WHAT WE DO
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="heading-section text-[var(--foreground)]">
               One team, from concept drawings<br className="hidden sm:inline" /> to construction budget.
             </h2>
           </div>
           <Link
             href="/services"
-            className="px-6 py-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-500 text-slate-200 font-semibold text-sm transition-colors"
+            className="px-6 py-3 rounded-xl bg-[var(--foreground)] hover:bg-[var(--accent)] text-white font-semibold text-sm transition-colors shadow-xs"
           >
             Explore All 5 Disciplines →
           </Link>
@@ -64,25 +64,25 @@ export function CoreDisciplinesOverview() {
           {disciplines.map((d) => (
             <div
               key={d.num}
-              className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 hover:border-amber-500/50 transition-all flex flex-col justify-between group"
+              className="bg-[var(--background)] border border-[var(--border)] rounded-2xl p-8 hover:border-[var(--accent)]/70 transition-all shadow-xs hover:shadow-md flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-mono text-3xl font-bold text-amber-500">{d.num}</span>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 bg-slate-800 px-3 py-1 rounded">
+                  <span className="font-mono text-3xl font-bold text-[var(--accent)]">{d.num}</span>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-secondary)] bg-[var(--surface-elevated)] border border-[var(--border)] px-3 py-1 rounded">
                     {d.tagline}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)] group-hover:text-amber-400 transition-colors">
+                <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
                   {d.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6">
                   {d.desc}
                 </p>
               </div>
               <Link
                 href={d.link}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 group-hover:translate-x-1 transition-all"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-dark)] group-hover:translate-x-1 transition-all"
               >
                 Learn More <span>→</span>
               </Link>

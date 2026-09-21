@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ScrollReveal, StaggerContainer, AnimatedCounter } from '@/components/Animations';
 import { ServiceTabNav } from '@/components/ServiceTabNav';
+import { QuoteButton } from '@/components/QuoteModal';
 
 export default function EstimationTakeoffPage() {
   const processSteps = [
@@ -134,9 +135,9 @@ export default function EstimationTakeoffPage() {
                   Rather than a one-off estimate, ProArch can work as your ongoing remote estimating partner — so you&apos;re never forced to pass on a bid because of time or capacity. Contractors who bid continuously with us qualify for a discounted rate, keeping estimating costs predictable across every project. This lets you bid on more work without adding an in-house estimator to payroll.
                 </p>
                 <div className="pt-2">
-                  <Link href="/contact" className="inline-flex items-center text-sm font-bold text-[var(--accent)] hover:underline">
+                  <QuoteButton service="estimation" className="inline-flex items-center text-sm font-bold text-[var(--accent)] hover:underline">
                     Inquire about ongoing estimating partnership →
-                  </Link>
+                  </QuoteButton>
                 </div>
               </div>
             </div>
@@ -154,9 +155,9 @@ export default function EstimationTakeoffPage() {
                   Get a completed takeoff and cost estimate in 24-48 hours, or request a rush quote for tight deadlines.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                  <QuoteButton service="estimation" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
                     Get an Estimate →
-                  </Link>
+                  </QuoteButton>
                   <a href="tel:+18327373912" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/15 text-[var(--foreground)] font-bold border border-white/20 hover:bg-white/25 transition-all">
                     Call +1 (832) 737-3912
                   </a>

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ScrollReveal, StaggerContainer } from '@/components/Animations';
 import { ServiceTabNav } from '@/components/ServiceTabNav';
+import { QuoteButton } from '@/components/QuoteModal';
 
 export default function DraftingPage() {
   const deliverables = [
@@ -108,9 +109,9 @@ export default function DraftingPage() {
                   Open to working as an extended drafting team for architects, architecture, and engineering firms — using your firm&apos;s own formats and standards, at a lower cost than a full in-house drafting staff. This partnership model lets firms take on more projects without the overhead of hiring additional drafters.
                 </p>
                 <div className="pt-2">
-                  <Link href="/contact" className="inline-flex items-center text-sm font-bold text-[var(--accent)] hover:underline">
+                  <QuoteButton service="drafting" className="inline-flex items-center text-sm font-bold text-[var(--accent)] hover:underline">
                     Inquire about firm partnership →
-                  </Link>
+                  </QuoteButton>
                 </div>
               </div>
             </div>
@@ -129,9 +130,9 @@ export default function DraftingPage() {
                   Upload your sketches or project requirements for a fast quote.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                  <QuoteButton service="drafting" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
                     Request a Drafting Quote →
-                  </Link>
+                  </QuoteButton>
                   <a href="tel:+18327373912" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/15 text-white font-bold border border-[var(--background)]/30 hover:bg-black/30 transition-all">
                     Call +1 (832) 737-3912
                   </a>

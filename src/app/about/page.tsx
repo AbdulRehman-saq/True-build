@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ScrollReveal, StaggerContainer } from '@/components/Animations';
+import { QuoteButton } from '@/components/QuoteModal';
 
 export default function AboutPage() {
   return (
@@ -122,9 +123,9 @@ export default function AboutPage() {
                 <p className="text-white/80 max-w-md mx-auto font-medium">
                   Tell us about your project requirements or inquire about an ongoing partnership.
                 </p>
-                <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl mt-2">
-                  Get in Touch →
-                </Link>
+                <QuoteButton className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-[var(--accent)] font-bold transition-all hover:scale-105 active:scale-95 shadow-xl mt-2">
+                  Get in Touch & Request Quote →
+                </QuoteButton>
               </div>
             </div>
           </ScrollReveal>

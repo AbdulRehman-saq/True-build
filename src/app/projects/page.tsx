@@ -4,9 +4,12 @@ import React from 'react';
 import { ScrollReveal } from '@/components/Animations';
 import { FilterableProjectsGallery } from '@/components/FilterableProjectsGallery';
 import { useQuoteModal } from '@/components/QuoteModal';
+import { useModelExplorer } from '@/components/ModelExplorer3DModal';
+import { Compass, Sparkles, Box } from 'lucide-react';
 
 export default function ProjectsPage() {
   const { openQuoteModal } = useQuoteModal();
+  const { openModelExplorer } = useModelExplorer();
 
   return (
     <>
@@ -29,6 +32,35 @@ export default function ProjectsPage() {
               </p>
             </ScrollReveal>
           </div>
+
+          {/* Interactive 3D Model Showcase Banner */}
+          <ScrollReveal delay={200}>
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#181D26] border border-[#2B3342] text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--accent)]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-[var(--accent)] font-semibold">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Real-Time WebGL Architecture</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold">
+                  Interactive 3D BIM & Engineering Viewer
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+                  Inspect our 3D parametric building model in real-time. Rotate 360°, explode floor assemblies, and review structural PE framing connections directly in your browser.
+                </p>
+              </div>
+
+              <div className="relative z-10 shrink-0 w-full md:w-auto">
+                <button
+                  onClick={openModelExplorer}
+                  className="w-full md:w-auto px-6 py-3.5 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <Compass className="w-4 h-4 text-white" />
+                  <span>Launch 3D BIM Viewer</span>
+                </button>
+              </div>
+            </div>
+          </ScrollReveal>
 
           {/* Interactive Filterable Gallery with Lightbox */}
           <ScrollReveal delay={240}>

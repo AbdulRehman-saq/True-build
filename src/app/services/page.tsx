@@ -3,19 +3,23 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ScrollReveal, StaggerContainer } from '@/components/Animations';
+import { ScrollReveal } from '@/components/Animations';
 import { servicesData } from '@/components/ServicesData';
 import { useQuoteModal } from '@/components/QuoteModal';
+import { useModelExplorer } from '@/components/ModelExplorer3DModal';
+import { Tilt3DCard, MotionReveal } from '@/components/FramerMotion';
+import { Compass, Sparkles } from 'lucide-react';
 
 export default function ServicesPage() {
   const { openQuoteModal } = useQuoteModal();
+  const { openModelExplorer } = useModelExplorer();
 
   return (
     <>
       <section className="pt-16 pb-24 lg:pt-24 lg:pb-32 relative overflow-hidden blueprint-grid-subtle">
         <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[var(--accent)]/[0.06] rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-12">
           <div>
             <ScrollReveal>
               <div className="accent-line mb-5" />
@@ -36,13 +40,43 @@ export default function ServicesPage() {
             </ScrollReveal>
           </div>
 
-          <StaggerContainer className="space-y-6">
-            {servicesData.map((s) => (
-              <Link
-                key={s.id}
-                href={s.href}
-                className="reveal block bg-white border border-[var(--border)] rounded-2xl overflow-hidden card-lift group shadow-sm hover:border-[var(--accent)] transition-all duration-300"
-              >
+          {/* Interactive 3D BIM Model Explorer Banner */}
+          <ScrollReveal delay={200}>
+            <div className="p-5 sm:p-8 rounded-3xl bg-[#181D26] border border-[#2B3342] text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--accent)]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-[var(--accent)] font-semibold">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>3D BIM & Parametric CAD</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold">
+                  Interactive 3D Architectural Model Explorer
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+                  Explore our live BIM building model directly in your browser. Inspect structural steel moment connections, glass curtain wall systems, and exploded floor plates.
+                </p>
+              </div>
+
+              <div className="relative z-10 shrink-0 w-full md:w-auto">
+                <button
+                  onClick={openModelExplorer}
+                  className="w-full md:w-auto px-6 py-3.5 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <Compass className="w-4 h-4 text-white" />
+                  <span>Launch 3D Explorer</span>
+                </button>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <div className="space-y-6">
+            {servicesData.map((s, idx) => (
+              <MotionReveal key={s.id} variant="up" delay={idx * 0.08}>
+                <Tilt3DCard maxTilt={4} scaleHover={1.01} className="rounded-2xl shadow-sm">
+                  <Link
+                    href={s.href}
+                    className="block bg-white border border-[var(--border)] rounded-2xl overflow-hidden group hover:border-[var(--accent)] transition-colors duration-300"
+                  >
                 <div className="grid sm:grid-cols-12 gap-0">
                   {/* Image Column */}
                   <div className="sm:col-span-4 h-52 sm:h-auto relative overflow-hidden bg-slate-900">
@@ -96,8 +130,10 @@ export default function ServicesPage() {
                   </div>
                 </div>
               </Link>
+            </Tilt3DCard>
+              </MotionReveal>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
