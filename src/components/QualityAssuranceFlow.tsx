@@ -63,7 +63,7 @@ export function QualityAssuranceFlow() {
             <div className="accent-line mx-auto" />
           </ScrollReveal>
           <ScrollReveal delay={80}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-700 dark:text-emerald-400 font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-xs font-mono text-emerald-800 font-bold">
               <ShieldCheck className="w-4 h-4" />
               <span>Rigorous Quality Assurance</span>
             </div>
@@ -86,25 +86,25 @@ export function QualityAssuranceFlow() {
               <button
                 key={step.num}
                 onClick={() => setActiveStep(idx)}
-                className={`p-4 rounded-2xl text-left border transition-all cursor-pointer ${
+                className={`p-4 rounded-2xl text-left border-2 transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-white dark:bg-slate-900 border-amber-500 shadow-lg shadow-amber-500/10 scale-[1.02]'
-                    : 'bg-white/60 dark:bg-slate-900/60 border-[var(--border)] hover:border-amber-400/50'
+                    ? 'bg-white border-amber-500 shadow-md scale-[1.02]'
+                    : 'bg-white/80 border-[#DDD7CB] hover:border-amber-400'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className={`font-mono text-xs font-bold px-2 py-0.5 rounded ${
-                    isActive ? 'bg-amber-500 text-slate-950' : 'bg-[var(--surface-elevated)] text-[var(--text-muted)]'
+                  <span className={`font-mono text-xs font-extrabold px-2 py-0.5 rounded ${
+                    isActive ? 'bg-amber-500 text-slate-950' : 'bg-slate-200 text-slate-700'
                   }`}>
                     {step.num}
                   </span>
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                    isActive ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400' : 'text-[var(--text-muted)]'
+                    isActive ? 'bg-amber-500/15 text-amber-700' : 'text-slate-500'
                   }`}>
                     {step.icon}
                   </div>
                 </div>
-                <h3 className="text-xs font-bold text-[var(--foreground)] leading-tight line-clamp-2">
+                <h3 className="text-xs font-extrabold text-slate-950 leading-tight line-clamp-2">
                   {step.title}
                 </h3>
               </button>
@@ -113,54 +113,54 @@ export function QualityAssuranceFlow() {
         </div>
 
         {/* Active Step Detailed Card */}
-        <div className="bg-white dark:bg-slate-900 border border-[var(--border)] rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+        <div className="bg-white border-2 border-[#DDD7CB] rounded-3xl p-6 sm:p-10 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-5">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-base font-extrabold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-3 py-1 rounded-lg">
+                <span className="font-mono text-base font-extrabold text-amber-800 bg-amber-500/15 border border-amber-500/30 px-3 py-1 rounded-lg">
                   Gate {steps[activeStep].num}
                 </span>
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold">
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-600 font-bold">
                   Responsible: {steps[activeStep].role}
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)] font-heading">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 font-heading">
                 {steps[activeStep].title}
               </h3>
 
-              <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
                 {steps[activeStep].desc}
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
-                <div className="px-3.5 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--foreground)] font-medium">
-                  <span className="text-[var(--text-muted)] block text-[10px] uppercase font-mono">Deliverable Artifact</span>
+                <div className="px-3.5 py-2 rounded-xl bg-[#FAF9F5] border-2 border-[#DDD7CB] text-xs text-slate-950 font-bold">
+                  <span className="text-slate-600 block text-[10px] uppercase font-mono font-medium">Deliverable Artifact</span>
                   {steps[activeStep].deliverable}
                 </div>
-                <div className="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-700 dark:text-emerald-400 font-bold">
-                  <span className="text-emerald-600/70 dark:text-emerald-500/70 block text-[10px] uppercase font-mono">QA Benchmark</span>
+                <div className="px-3.5 py-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs text-emerald-800 font-bold">
+                  <span className="text-emerald-700/80 block text-[10px] uppercase font-mono font-medium">QA Benchmark</span>
                   {steps[activeStep].metric}
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[var(--surface-elevated)] border border-[var(--border)] text-center space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-500 flex items-center justify-center shadow-md">
+            <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#FAF9F5] border-2 border-[#DDD7CB] text-center space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-700 flex items-center justify-center shadow-xs">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <h4 className="text-base font-bold text-[var(--foreground)]">City Permit Guaranteed</h4>
-                <p className="text-xs text-[var(--text-secondary)] mt-1">
+                <h4 className="text-base font-extrabold text-slate-950">City Permit Guaranteed</h4>
+                <p className="text-xs text-slate-700 font-medium mt-1">
                   We resolve any municipal plan check comments at zero extra cost.
                 </p>
               </div>
               <div className="w-full pt-2">
                 <button
                   onClick={() => setActiveStep((prev) => (prev + 1) % steps.length)}
-                  className="w-full py-2.5 rounded-xl bg-[var(--foreground)] text-[var(--background)] hover:opacity-90 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-slate-950 text-white hover:bg-slate-800 font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <span>Next Inspection Gate</span>
                   <ArrowRight className="w-3.5 h-3.5" />

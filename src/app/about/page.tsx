@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { ScrollReveal, StaggerContainer } from '@/components/Animations';
 import { QuoteButton } from '@/components/QuoteModal';
-import { About3DShowcase } from '@/components/About3DShowcase';
 import { QualityAssuranceFlow } from '@/components/QualityAssuranceFlow';
 import { AboutMilestones } from '@/components/AboutMilestones';
 import { CoverageMapSection } from '@/components/CoverageMapSection';
@@ -23,16 +22,16 @@ export default function AboutPage() {
             <div className="accent-line mb-5" />
           </ScrollReveal>
           <ScrollReveal delay={80}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-700 dark:text-amber-400 font-semibold mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-xs font-mono text-amber-800 font-bold mb-4">
               <span>Extended Architecture & Engineering Capacity</span>
             </div>
-            <h1 className="heading-display text-[var(--foreground)] max-w-4xl">
+            <h1 className="heading-display text-slate-950 max-w-4xl">
               An extended team for firms,{' '}
               <span className="text-gradient">not just another vendor.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="body-large text-[var(--text-secondary)] max-w-2xl mt-6">
+            <p className="body-large text-slate-700 max-w-2xl mt-6">
               ProArch provides licensed PE engineering, permit-ready drafting, 3D BIM modeling, and fast construction cost estimation for architects, contractors, developers, and homeowners.
             </p>
           </ScrollReveal>
@@ -42,9 +41,6 @@ export default function AboutPage() {
       {/* Milestone Stats */}
       <AboutMilestones />
 
-      {/* Interactive 3D Model Showcase */}
-      <About3DShowcase />
-
       {/* How We Work */}
       <section className="py-24 bg-[var(--surface)] border-y border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -52,17 +48,17 @@ export default function AboutPage() {
             <ScrollReveal variant="left">
               <div className="space-y-5 lg:sticky lg:top-28">
                 <div className="accent-line" />
-                <h2 className="heading-section text-[var(--foreground)]">
+                <h2 className="heading-section text-slate-950">
                   How we integrate with your team
                 </h2>
-                <p className="text-[var(--text-secondary)] leading-relaxed text-sm sm:text-base">
+                <p className="text-slate-700 leading-relaxed text-sm sm:text-base font-medium">
                   We built ProArch around one clear idea: architecture firms and general contractors need reliable engineering, drafting, and cost estimating capacity without taking on high full-time overhead.
                 </p>
-                <p className="text-[var(--text-secondary)] leading-relaxed text-sm sm:text-base">
+                <p className="text-slate-700 leading-relaxed text-sm sm:text-base font-medium">
                   We plug directly into your firm’s CAD/BIM templates, layering standards, and municipal title blocks so drawings feel 100% native to your practice.
                 </p>
                 <div className="pt-3">
-                  <QuoteButton className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-md shadow-amber-500/15">
+                  <QuoteButton className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-md shadow-amber-500/15 cursor-pointer">
                     Start a Project Consultation →
                   </QuoteButton>
                 </div>
@@ -94,17 +90,17 @@ export default function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="reveal bg-[var(--surface-elevated)] border border-[var(--border)] rounded-2xl p-7 card-lift group"
+                  className="reveal bg-white border-2 border-[#DDD7CB] rounded-2xl p-7 card-lift group shadow-xs"
                 >
                   <div className="flex items-start gap-5">
-                    <span className="font-mono text-2xl font-extrabold text-amber-500 shrink-0">
+                    <span className="font-mono text-2xl font-black text-amber-600 shrink-0">
                       {item.num}
                     </span>
                     <div>
-                      <h3 className="text-lg font-bold text-[var(--foreground)] mb-1.5 group-hover:text-amber-500 transition-colors">
+                      <h3 className="text-lg font-extrabold text-slate-950 mb-1.5 group-hover:text-amber-700 transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      <p className="text-sm font-medium text-slate-700 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -130,7 +126,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <ScrollReveal>
             <div className="accent-line mb-5" />
-            <h2 className="heading-section text-[var(--foreground)] mb-10">Who we serve</h2>
+            <h2 className="heading-section text-slate-950 mb-10">Who we serve</h2>
           </ScrollReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -144,18 +140,18 @@ export default function AboutPage() {
                 desc: 'Commercial strip centers, restaurants, industrial warehouses, retail build-outs, and submittal-ready fabrication shop drawings.',
               },
               {
-                title: 'Architecture & Engineering Firms',
-                desc: 'On-demand production capacity during workload spikes. We act as your back-office drafting and engineering team.',
+                title: 'Architecture & Design Studios',
+                desc: 'Over-capacity support, redline drafting production, 3D photorealistic renderings, and BIM coordination models.',
               },
             ].map((item) => (
               <div
                 key={item.title}
-                className="reveal bg-[var(--surface-elevated)] border border-[var(--border)] rounded-2xl p-7 card-lift"
+                className="reveal bg-white border-2 border-[#DDD7CB] rounded-2xl p-7 card-lift shadow-xs"
               >
-                <h3 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
+                <h3 className="text-lg font-extrabold text-slate-950 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                <p className="text-sm font-medium text-slate-700 leading-relaxed">
                   {item.desc}
                 </p>
               </div>

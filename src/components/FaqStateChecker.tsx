@@ -112,16 +112,16 @@ export function FaqStateChecker() {
   );
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-[var(--border)] rounded-3xl p-6 sm:p-10 shadow-xl my-12">
-      <div className="flex items-center gap-2 text-xs font-mono text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider mb-2">
+    <div className="bg-white border-2 border-[#DDD7CB] rounded-3xl p-6 sm:p-10 shadow-sm my-12">
+      <div className="flex items-center gap-2 text-xs font-mono text-amber-700 font-bold uppercase tracking-wider mb-2">
         <MapPin className="w-4 h-4" />
         <span>Jurisdiction Lookup Tool</span>
       </div>
 
-      <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)] font-heading mb-2">
+      <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 font-heading mb-2">
         Check PE licensing & building codes by state
       </h3>
-      <p className="text-sm text-[var(--text-secondary)] mb-8 max-w-2xl">
+      <p className="text-sm font-medium text-slate-700 mb-8 max-w-2xl">
         Select an active state below to inspect local governing codes, municipal amendment compliance, and engineering turnaround.
       </p>
 
@@ -136,8 +136,8 @@ export function FaqStateChecker() {
               onClick={() => setSelectedState(state)}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 isSelected
-                  ? 'bg-amber-500 text-slate-950 shadow-md scale-105'
-                  : 'bg-[var(--surface)] text-[var(--text-secondary)] border border-[var(--border)] hover:border-amber-400'
+                  ? 'bg-amber-500 text-slate-950 border-2 border-amber-500 shadow-md scale-105'
+                  : 'bg-white text-slate-800 border-2 border-[#DDD7CB] hover:border-amber-400 hover:text-amber-700'
               }`}
             >
               <span className="font-mono text-[10px] opacity-80">{state.abbr}</span>
@@ -148,31 +148,31 @@ export function FaqStateChecker() {
       </div>
 
       {/* Selected State Details Box */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border)] relative overflow-hidden">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#FAF9F5] border-2 border-[#DDD7CB] relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#DDD7CB]">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg font-black font-mono shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-700 flex items-center justify-center text-lg font-black font-mono shrink-0">
               {selectedState.abbr}
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h4 className="text-xl font-bold text-[var(--foreground)] font-heading">
+                <h4 className="text-xl font-extrabold text-slate-950 font-heading">
                   {selectedState.name}
                 </h4>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[11px] font-bold text-emerald-800">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>Active PE Stamp</span>
                 </span>
               </div>
-              <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">
+              <p className="text-xs text-slate-600 font-mono mt-0.5">
                 Full Structural & MEP Engineering Certification
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-mono">
-            <span className="text-[var(--text-muted)]">Typical Turnaround:</span>
-            <span className="font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg">
+            <span className="text-slate-600 font-medium">Typical Turnaround:</span>
+            <span className="font-bold text-amber-800 bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 rounded-lg">
               {selectedState.turnaround}
             </span>
           </div>
@@ -180,19 +180,19 @@ export function FaqStateChecker() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 text-xs">
           <div>
-            <span className="font-mono uppercase font-bold text-[var(--text-muted)] block mb-1">
+            <span className="font-mono uppercase font-bold text-slate-600 block mb-1">
               Governing Code & Amendments
             </span>
-            <p className="text-sm font-semibold text-[var(--foreground)]">
+            <p className="text-sm font-extrabold text-slate-950">
               {selectedState.code}
             </p>
           </div>
 
           <div>
-            <span className="font-mono uppercase font-bold text-[var(--text-muted)] block mb-1">
+            <span className="font-mono uppercase font-bold text-slate-600 block mb-1">
               Regional Engineering Specialization
             </span>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-sm font-medium text-slate-800 leading-relaxed">
               {selectedState.specialty}
             </p>
           </div>

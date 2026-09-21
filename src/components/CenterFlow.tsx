@@ -63,12 +63,12 @@ export function ServicesCenterFlow({ className = '' }: { className?: string }) {
   return (
     <div className={`relative rounded-3xl border border-[var(--border)] bg-[var(--surface-elevated)] shadow-xl overflow-hidden ${className}`}>
       {/* Top clear notification bar */}
-      <div className="px-4 sm:px-6 py-3 bg-white/95 dark:bg-slate-900/95 border-b border-[var(--border)] flex items-center justify-between gap-2 text-xs font-sans">
-        <div className="flex items-center gap-2 text-amber-800 dark:text-amber-400 font-extrabold tracking-wider uppercase text-xs sm:text-sm">
+      <div className="px-4 sm:px-6 py-3 bg-white/95 border-b border-[#DDD7CB] flex items-center justify-between gap-2 text-xs font-sans">
+        <div className="flex items-center gap-2 text-amber-800 font-extrabold tracking-wider uppercase text-xs sm:text-sm">
           <Sparkles className="w-4 h-4 animate-pulse text-amber-500 shrink-0" />
           <span>Integrated Services • 5 Disciplines</span>
         </div>
-        <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
+        <div className="flex items-center gap-3 text-slate-700 font-medium">
           <span className="hidden md:inline text-xs sm:text-sm">Click any node to explore full service scope</span>
           <Link
             href="/services"

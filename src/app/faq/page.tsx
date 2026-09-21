@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ScrollReveal } from '@/components/Animations';
 import { QuoteButton } from '@/components/QuoteModal';
-import { Faq3DDeliverable } from '@/components/Faq3DDeliverable';
 import { FaqTurnaroundCalculator } from '@/components/FaqTurnaroundCalculator';
 import { FaqStateChecker } from '@/components/FaqStateChecker';
 import { ContactFormSection } from '@/components/ContactFormSection';
@@ -123,7 +122,7 @@ export default function FAQPage() {
               <div className="accent-line mb-5" />
             </ScrollReveal>
             <ScrollReveal delay={80}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-700 dark:text-amber-400 font-semibold mb-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-xs font-mono text-amber-800 font-bold mb-4">
                 <HelpCircle className="w-3.5 h-3.5" />
                 <span>Frequently Asked Questions & Interactive Guides</span>
               </div>
@@ -164,14 +163,14 @@ export default function FAQPage() {
               },
             ].map((card, i) => (
               <ScrollReveal key={card.title} delay={i * 60}>
-                <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-[var(--border)] shadow-sm hover:border-amber-500/40 transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
+                <div className="p-5 sm:p-6 rounded-2xl bg-white border-2 border-[#DDD7CB] shadow-sm hover:border-[#D8A338] hover:shadow-md transition-all">
+                  <div className="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-700 flex items-center justify-center mb-3.5">
                     {card.icon}
                   </div>
-                  <h3 className="font-bold text-sm text-[var(--foreground)] mb-1">
+                  <h3 className="font-extrabold text-base text-slate-950 mb-1.5 leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
                     {card.desc}
                   </p>
                 </div>
@@ -179,22 +178,19 @@ export default function FAQPage() {
             ))}
           </div>
 
-          {/* Interactive Component 1: 3D Deliverables Model Explorer */}
-          <Faq3DDeliverable />
-
-          {/* Interactive Component 2: Project Turnaround & Deliverables Estimator */}
+          {/* Interactive Component: Project Turnaround & Deliverables Estimator */}
           <FaqTurnaroundCalculator />
 
-          {/* Interactive Component 3: State PE Licensing & Building Code Lookup Tool */}
+          {/* Interactive Component: State PE Licensing & Building Code Lookup Tool */}
           <FaqStateChecker />
 
           {/* FAQ Accordion Section */}
           <div className="pt-8 space-y-8 max-w-4xl mx-auto">
             <div className="text-center space-y-3">
-              <h2 className="heading-section text-[var(--foreground)]">
+              <h2 className="heading-section text-slate-950">
                 Detailed Questions & Answers
               </h2>
-              <p className="text-sm text-[var(--text-secondary)]">
+              <p className="text-sm sm:text-base text-slate-700 font-medium">
                 Filter by discipline or search topics below
               </p>
 
@@ -209,8 +205,8 @@ export default function FAQPage() {
                     }}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
                       activeCat === c.id
-                        ? 'bg-amber-500 text-slate-950 font-extrabold shadow-md shadow-amber-500/20'
-                        : 'bg-white dark:bg-slate-900 border border-[var(--border)] text-[var(--text-secondary)] hover:border-amber-400'
+                        ? 'bg-amber-500 text-slate-950 font-extrabold shadow-md shadow-amber-500/25'
+                        : 'bg-white border-2 border-[#DDD7CB] text-slate-800 font-bold hover:border-amber-500 hover:text-amber-700'
                     }`}
                   >
                     {c.label}
@@ -220,30 +216,30 @@ export default function FAQPage() {
             </div>
 
             {/* Accordion Items */}
-            <div className="space-y-3 pt-4">
+            <div className="space-y-4 pt-4">
               {filtered.map((faq, i) => {
                 const isOpen = openIdx === i;
                 return (
                   <div
                     key={i}
-                    className={`bg-white dark:bg-slate-900 border rounded-2xl overflow-hidden transition-all duration-300 ${
+                    className={`bg-white border-2 rounded-2xl overflow-hidden transition-all duration-200 shadow-xs ${
                       isOpen
-                        ? 'border-amber-500 shadow-md shadow-amber-500/5'
-                        : 'border-[var(--border)] hover:border-amber-400/50'
+                        ? 'border-amber-500 shadow-md shadow-amber-500/10'
+                        : 'border-[#DDD7CB] hover:border-amber-400'
                     }`}
                   >
                     <button
                       onClick={() => setOpenIdx(isOpen ? null : i)}
-                      className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 cursor-pointer"
+                      className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 cursor-pointer bg-white hover:bg-amber-50/25 transition-colors"
                     >
-                      <span className="font-bold text-[var(--foreground)] text-[15px] leading-snug pr-4">
+                      <span className="font-extrabold text-slate-950 text-base sm:text-lg leading-snug pr-4">
                         {faq.q}
                       </span>
                       <div
-                        className={`w-8 h-8 rounded-full border border-[var(--border)] flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        className={`w-9 h-9 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
                           isOpen
-                            ? 'rotate-45 border-amber-500 text-amber-500 bg-amber-500/10'
-                            : 'text-[var(--text-muted)] bg-[var(--surface)]'
+                            ? 'rotate-45 border-amber-500 text-slate-950 bg-amber-400'
+                            : 'border-slate-300 text-slate-700 bg-slate-100'
                         }`}
                       >
                         <svg
@@ -258,11 +254,11 @@ export default function FAQPage() {
                       </div>
                     </button>
                     <div
-                      className={`overflow-hidden transition-all duration-300 ${
+                      className={`overflow-hidden transition-all duration-200 ${
                         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                       }`}
                     >
-                      <div className="px-6 pb-6 text-sm text-[var(--text-secondary)] leading-relaxed border-t border-[var(--border)]">
+                      <div className="px-6 pb-6 text-sm sm:text-base font-medium text-slate-800 leading-relaxed border-t border-slate-200/80 bg-[#FAF9F5]">
                         <p className="pt-4">{faq.a}</p>
                       </div>
                     </div>
@@ -275,10 +271,10 @@ export default function FAQPage() {
           {/* Interactive Direct Inquiries & Quote Form */}
           <div className="pt-16 max-w-4xl mx-auto space-y-6">
             <div className="text-center space-y-2">
-              <span className="font-mono text-xs uppercase font-bold text-amber-600 dark:text-amber-400 tracking-wider">
+              <span className="font-mono text-xs uppercase font-extrabold text-amber-800 tracking-wider">
                 Still have an unaddressed scope requirement?
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)] font-heading">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 font-heading">
                 Submit your project drawings or question directly
               </h3>
             </div>
